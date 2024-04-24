@@ -99,12 +99,12 @@ public class Cube : MonoBehaviour
     {
         Collider[] hits = Physics.OverlapSphere(transform.position, explosinRadius);
 
-        List<Rigidbody> barrels = new();
+        List<Rigidbody> cubes = new();
 
         foreach (Collider hit in hits)
             if (hit.attachedRigidbody != null)
-                barrels.Add(hit.attachedRigidbody);
+                cubes.Add(hit.attachedRigidbody);
 
-        return barrels;
+        return cubes;
     }
 }
