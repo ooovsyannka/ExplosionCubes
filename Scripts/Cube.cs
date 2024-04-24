@@ -1,14 +1,10 @@
-using JetBrains.Annotations;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
-using Unity.VisualScripting.FullSerializer;
 using UnityEngine;
 
 public class Cube : MonoBehaviour
 {
     [SerializeField] private GameObject _cubePrefabs;
-    [SerializeField] private RaycastDrawer _raycastDrawer;
     [SerializeField] private float _explosionForce;
     [SerializeField] private GameObject _effect;
 
@@ -80,7 +76,7 @@ public class Cube : MonoBehaviour
         float maxChance = 1f;
         float randomChance = UnityEngine.Random.Range(0.0f, maxChance);
 
-        print(CurrentChance);
+        print("Current Chance " + CurrentChance);
 
         if (randomChance > CurrentChance)
             return false;

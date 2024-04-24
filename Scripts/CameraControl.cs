@@ -7,7 +7,6 @@ public class CameraControl : MonoBehaviour
     private readonly string MouseX = "Mouse X";
     private readonly string MouseY = "Mouse Y";
 
-
     private void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;

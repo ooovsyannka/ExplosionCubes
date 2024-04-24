@@ -1,5 +1,4 @@
-﻿using System.Runtime.InteropServices;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class RaycastDrawer : MonoBehaviour
@@ -10,7 +9,7 @@ public class RaycastDrawer : MonoBehaviour
     [SerializeField] private float _maxDistance = 50f;
     [SerializeField] private float _radius = 0.1f;
 
-    private string tagObject = "Cube";
+    private string _tagObject = "Cube";
 
     public void Update()
     {
@@ -24,7 +23,7 @@ public class RaycastDrawer : MonoBehaviour
         {
             Transform objectHit = hit.transform;
 
-            if (objectHit.tag == tagObject)
+            if (objectHit.tag == _tagObject)
             {
                 _point.color = Color.red;
             }
