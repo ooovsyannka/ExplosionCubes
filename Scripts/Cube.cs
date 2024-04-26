@@ -2,15 +2,14 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Material))]
+
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private GameObject _cubePrefabs;
     [SerializeField] private float _explosionForce;
     [SerializeField] private GameObject _effect;
 
     private float _currentChance = 1f;
-
-    public Renderer Renderer { get; private set; }
 
     public float CurrentChance
     {
@@ -27,14 +26,9 @@ public class Cube : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        Renderer = GetComponent<Renderer>();
-    }
-
     private void OnMouseUpAsButton()
     {
-        if (IsSeparation())
+        if (CanDivided())
             InstantiateCube();
 
         Instantiate(_effect, transform.position, transform.rotation);
@@ -57,7 +51,7 @@ public class Cube : MonoBehaviour
             currentCube = Instantiate(this, transform.position, transform.rotation);
             currentCube.transform.localScale = transform.localScale / 2;
             currentCube.CurrentChance = _currentChance / divider;
-            currentCube.Renderer.material.color = GetRandomColor();
+            currentCube.GetComponent<Renderer>().material.color = GetRandomColor();
         }
     }
 
@@ -71,23 +65,20 @@ public class Cube : MonoBehaviour
         return new Color(randomR, randomG, randomB);
     }
 
-    private bool IsSeparation()
+    private bool CanDivided()
     {
         float maxChance = 1f;
         float randomChance = UnityEngine.Random.Range(0.0f, maxChance);
 
         print("Current Chance " + CurrentChance);
 
-        if (randomChance > CurrentChance)
-            return false;
-        else
-            return true;
+        return randomChance < CurrentChance;
     }
 
     private void Explode()
     {
         float divisionRadius = 2f;
-        float explosinRadius = transform.localScale.x/ divisionRadius;
+        float explosinRadius = transform.localScale.x / divisionRadius;
 
         foreach (Rigidbody expodableObject in GetExpodableObject(explosinRadius))
         {

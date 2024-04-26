@@ -1,6 +1,8 @@
 using UnityEngine;
 
-public class CameraControl : MonoBehaviour
+[RequireComponent(typeof(Camera))]
+
+public class Looking : MonoBehaviour
 {
     [SerializeField] private float _speed;
 

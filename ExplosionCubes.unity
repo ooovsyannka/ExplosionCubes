@@ -185,7 +185,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 25437714}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -498,7 +498,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208019834}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -765,7 +765,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870592494}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -870,7 +870,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1072254684}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1035,7 +1035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d1ba0e88ebda704688ad4d34a674cce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 0
+  _speed: 100
 --- !u!1 &1237226822
 GameObject:
   m_ObjectHideFlags: 0
@@ -1052,7 +1052,7 @@ GameObject:
   - component: {fileID: 1237226823}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1096,9 +1096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8be95425c0f014b885ba08c252e2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefabs: {fileID: 1237226822}
-  _raycastDrawer: {fileID: 1130851285}
-  _explosionForce: 50
+  _explosionForce: 500
   _effect: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!65 &1237226825
 BoxCollider:
@@ -1277,7 +1275,7 @@ GameObject:
   - component: {fileID: 1530353857}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1321,9 +1319,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8be95425c0f014b885ba08c252e2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefabs: {fileID: 1530353856}
-  _raycastDrawer: {fileID: 1130851285}
-  _explosionForce: 50
+  _explosionForce: 500
   _effect: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!65 &1530353859
 BoxCollider:
@@ -1473,7 +1469,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1937257821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1532,7 +1528,7 @@ GameObject:
   - component: {fileID: 1961756497}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1576,9 +1572,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8be95425c0f014b885ba08c252e2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefabs: {fileID: 1961756496}
-  _raycastDrawer: {fileID: 1130851285}
-  _explosionForce: 50
+  _explosionForce: 500
   _effect: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!65 &1961756499
 BoxCollider:
@@ -1714,9 +1708,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba8be95425c0f014b885ba08c252e2f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _cubePrefabs: {fileID: 3261826064636303730}
-  _raycastDrawer: {fileID: 1130851285}
-  _explosionForce: 50
+  _explosionForce: 500
   _effect: {fileID: 100000, guid: 15ca5b8fa431dc04291a79cadcd19874, type: 3}
 --- !u!1 &3261826064636303730
 GameObject:
@@ -1734,7 +1726,7 @@ GameObject:
   - component: {fileID: 7878418521552487019}
   m_Layer: 0
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Cube
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
