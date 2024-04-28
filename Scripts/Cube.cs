@@ -22,6 +22,7 @@ public class Cube : MonoBehaviour
             {
                 throw new ArgumentOutOfRangeException();
             }
+            
             _explosionForce = value;
         }
     }
