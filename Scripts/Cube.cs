@@ -1,15 +1,30 @@
 using System;
-using System.Collections.Generic;
 using UnityEngine;
 
-[RequireComponent(typeof(Material))]
+[RequireComponent(typeof(Renderer))]
+[RequireComponent(typeof(Rigidbody))]
 
 public class Cube : MonoBehaviour
 {
-    [SerializeField] private float _explosionForce;
-    [SerializeField] private GameObject _effect;
-
     private float _currentChance = 1f;
+    private float _explosionForce = 500f;
+    private Rigidbody _rigidbody;
+
+    public event Action CubeDestroyed;
+
+    public float ExplosionForce
+    {
+        get => _explosionForce;
+
+        set
+        {
+            if (value <= 0)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            _explosionForce = value;
+        }
+    }
 
     public float CurrentChance
     {
@@ -26,15 +41,26 @@ public class Cube : MonoBehaviour
         }
     }
 
+    private void Awake()
+    {
+        GetComponent<Renderer>().material.color = GetRandomColor();
+        _rigidbody = GetComponent<Rigidbody>();
+    }
+
     private void OnMouseUpAsButton()
     {
         if (CanDivided())
             InstantiateCube();
 
-        Instantiate(_effect, transform.position, transform.rotation);
-        Explode();
-
+        CubeDestroyed?.Invoke();
         Destroy(gameObject);
+    }
+
+    public void AddForce(float explosionRadius)
+    {
+        float explosinRadius = transform.localScale.x;
+        _rigidbody.AddExplosionForce(explosionRadius, transform.position, explosinRadius);
+        print(("value") + explosionRadius);
     }
 
     private void InstantiateCube()
@@ -49,9 +75,10 @@ public class Cube : MonoBehaviour
         for (int i = 0; i < randomCountCube; i++)
         {
             currentCube = Instantiate(this, transform.position, transform.rotation);
-            currentCube.transform.localScale = transform.localScale / 2;
+            currentCube.AddForce(ExplosionForce);
+            currentCube.transform.localScale = transform.localScale / divider;
             currentCube.CurrentChance = _currentChance / divider;
-            currentCube.GetComponent<Renderer>().material.color = GetRandomColor();
+            currentCube.ExplosionForce = _explosionForce / divider;
         }
     }
 
@@ -70,32 +97,6 @@ public class Cube : MonoBehaviour
         float maxChance = 1f;
         float randomChance = UnityEngine.Random.Range(0.0f, maxChance);
 
-        print("Current Chance " + CurrentChance);
-
         return randomChance < CurrentChance;
-    }
-
-    private void Explode()
-    {
-        float divisionRadius = 2f;
-        float explosinRadius = transform.localScale.x / divisionRadius;
-
-        foreach (Rigidbody expodableObject in GetExpodableObject(explosinRadius))
-        {
-            expodableObject.AddExplosionForce(_explosionForce, transform.position, explosinRadius);
-        }
-    }
-
-    private List<Rigidbody> GetExpodableObject(float explosinRadius)
-    {
-        Collider[] hits = Physics.OverlapSphere(transform.position, explosinRadius);
-
-        List<Rigidbody> cubes = new();
-
-        foreach (Collider hit in hits)
-            if (hit.attachedRigidbody != null)
-                cubes.Add(hit.attachedRigidbody);
-
-        return cubes;
     }
 }
